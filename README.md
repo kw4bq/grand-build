@@ -5,6 +5,13 @@ A shell script that packages up all of the steps to build the required dependenc
 
 For more details, see the GNU Radio [Android Page](http://gnuradio.org/redmine/projects/gnuradio/wiki/Android) or specifically the [Instructions to build the dependencies](http://gnuradio.org/redmine/projects/gnuradio/wiki/GRAndDeps) as well as [Instructions to build GNU Radio](http://gnuradio.org/redmine/projects/gnuradio/wiki/GRAndBuild).
 
+## Deps
+Updated for 18.04 Ubuntu Bionic
+1. Install [Android Studio](https://developer.android.com/studio/install)
+2. Open Android SDK Manager > SDK Tools > Select CMake, LLDB, NDK
+3.
+
+
 It is tested with Ubuntu 15.10, 64-bit. There are likely a handful of apt-gettable programs necessary for this to complete. You will definitely need the following:
 - cmake
 - git
