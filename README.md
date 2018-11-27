@@ -8,8 +8,8 @@ For more details, see the GNU Radio [Android Page](http://gnuradio.org/redmine/p
 ## Deps
 Updated for 18.04 Ubuntu Bionic
 1. Install [Android Studio](https://developer.android.com/studio/install)
-2. Open Android SDK Manager > SDK Tools > Select CMake, LLDB, NDK
-3.
+2. Open Android SDK Manager > SDK Tools > Select [NDK, CMake, and LLDB](https://developer.android.com/ndk/guides)
+
 
 
 It is tested with Ubuntu 15.10, 64-bit. There are likely a handful of apt-gettable programs necessary for this to complete. You will definitely need the following:
