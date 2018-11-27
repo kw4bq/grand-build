@@ -29,19 +29,20 @@
 if [ -z "$PREFIX" ];
 then
     echo "PREFIX not set; defaulting to /opt/grandroid"
-    PREFIX=/opt/grandroid
+    mkdir -p ~/code/grandroid
+    PREFIX=~/code/grandroid
 fi
 
 if [ -z "$ANDROID_SDK" ];
 then
-    echo "Please set ANDROID_SDK to point to the location of the Android SDK (e.g., /opt/android)"
-    exit
+    echo "setting SDK path"
+    ANDROID_SDK=/home/emery/Android/Sdk
 fi
 
 if [ -z "$ANDROID_NDK" ];
 then
-    echo "Please set ANDROID_NDK to point to the location of the Android NDK (e.g., /opt/ndk)"
-    exit
+    echo "setting NDK path"
+    ANDROID_NDK=/home/emery/Android/Sdk/ndk-bundle
 fi
 
 if [ -z "$PARALLEL" ];
@@ -52,10 +53,10 @@ fi
 
 set -e
 
-echo "Asking for sudo permissions to create prefix directory ${PREFIX}"
-sudo mkdir -p ${PREFIX}
-sudo chown $USER:$USER -R ${PREFIX}
-sudo -K # invalidates credentials for anyone paranoid
+#echo "Asking for sudo permissions to create prefix directory ${PREFIX}"
+#sudo mkdir -p ${PREFIX}
+#sudo chown $USER:$USER -R ${PREFIX}
+#sudo -K # invalidates credentials for anyone paranoid
 
 ANDROID_MIN_API_VERSION=21
 ANDROID_STANDALONE_TOOLCHAIN=${PREFIX}/android-toolchain
@@ -63,7 +64,8 @@ PATH_ORIG=$PATH
 PATH=$PATH:$ANDROID_STANDALONE_TOOLCHAIN/bin:$ANDROID_SDK/tools:$ANDROID_NDK
 TOP_BUILD_DIR=`pwd`
 
-${ANDROID_NDK}/build/tools/make-standalone-toolchain.sh --stl=gnustl --arch=arm --platform=android-${ANDROID_MIN_API_VERSION} --abis=armeabi-v7a --install-dir=${ANDROID_STANDALONE_TOOLCHAIN}
+${ANDROID_NDK}/build/tools/make-standalone-toolchain.sh --stl=gnustl --arch=arm --platform=android-21 --abis=arm64-v8a --install-dir=${ANDROID_STANDALONE_TOOLCHAIN}
+#${ANDROID_NDK}/build/tools/make-standalone-toolchain.sh --stl=gnustl --arch=arm --platform=android-${ANDROID_MIN_API_VERSION} --abis=armeabi-v7a --install-dir=${ANDROID_STANDALONE_TOOLCHAIN}
 
 
 ###########################################################
